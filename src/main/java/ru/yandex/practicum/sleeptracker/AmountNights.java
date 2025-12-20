@@ -1,22 +1,24 @@
 package ru.yandex.practicum.sleeptracker;
 
-import java.time.LocalDate;
+
 import java.time.LocalTime;
+
 import java.util.List;
+import java.util.function.Function;
 
-public class AmountNights {
+public class AmountNights implements Function<List<SleepingSession>, SleepAnalysisResult> {
 
-    public static int getAmountNights(List<SleepingSession> sleepingSessionList, ChronotypeDefinition chronotypeDefinition) {
-        int countSleep = 0;
-        LocalDate currentDateNight = null;
-        for (SleepingSession sleepingSession : sleepingSessionList) {
-            if (!sleepingSession.wake.toLocalDate().equals(currentDateNight) && (sleepingSession.sleep.toLocalDate().isBefore(sleepingSession.wake.toLocalDate()) || (sleepingSession.sleep.toLocalTime().isBefore(LocalTime.of(7, 0)) || sleepingSession.sleep.toLocalTime().equals(LocalTime.of(7, 0))))) {
-                countSleep++;
-                chronotypeDefinition.define(sleepingSession.sleep.toLocalTime(), sleepingSession.wake.toLocalTime());
-                currentDateNight = sleepingSession.wake.toLocalDate();
-            }
-        }
-        return countSleep;
+    @Override
+    public SleepAnalysisResult apply(List<SleepingSession> sleepingSessionsList) {
+
+        long nightSession = sleepingSessionsList.stream()
+                .filter(ss -> ss.sleep.toLocalDate().isBefore(ss.wake.toLocalDate()) || !ss.sleep.toLocalTime().isAfter(LocalTime.of(6, 0)))
+                .map(ss -> ss.wake.toLocalDate())
+                .distinct()
+                .count();
+
+        return new SleepAnalysisResult("Количество ночей: ", nightSession);
+
     }
 
 }

@@ -14,12 +14,12 @@ public class AmountNightsTest {
     void testGetAmountNights_WhenNoExistNightSessions_0() {
         //given
         List<SleepingSession> sleepingSessionList = new ArrayList<>();
-        ChronotypeDefinition chronotypeDefinition = new ChronotypeDefinition();
         sleepingSessionList.add(new SleepingSession(LocalDateTime.of(2026, 1, 2, 9, 0), LocalDateTime.of(2026, 1, 2, 10, 30), "GOOD"));
+        AmountNights amountNight = new AmountNights();
         //when
-        int amountNights = AmountNights.getAmountNights(sleepingSessionList, chronotypeDefinition);
+        long count = amountNight.apply(sleepingSessionList).value;
         //then
-        Assertions.assertEquals(0, amountNights, "Ожидается 0 ночей");
+        Assertions.assertEquals(0, count, "Ожидается 0 ночей");
     }
 
     @Test
@@ -27,9 +27,9 @@ public class AmountNightsTest {
     void testGetAmountNights_WhenNoExistSessions_0() {
         //given
         List<SleepingSession> sleepingSessionList = new ArrayList<>();
-        ChronotypeDefinition chronotypeDefinition = new ChronotypeDefinition();
+        AmountNights amountNight = new AmountNights();
         //when
-        int amountNights = AmountNights.getAmountNights(sleepingSessionList, chronotypeDefinition);
+        long amountNights = amountNight.apply(sleepingSessionList).value;
         //then
         Assertions.assertEquals(0, amountNights, "Ожидается 0 ночей");
     }
@@ -39,12 +39,12 @@ public class AmountNightsTest {
     void testGetAmountNights_WhenExistOneNightSessions_1() {
         //given
         List<SleepingSession> sleepingSessionList = new ArrayList<>();
-        ChronotypeDefinition chronotypeDefinition = new ChronotypeDefinition();
         sleepingSessionList.add(new SleepingSession(LocalDateTime.of(2026, 1, 1, 1, 0), LocalDateTime.of(2026, 1, 2, 10, 30), "GOOD"));
         sleepingSessionList.add(new SleepingSession(LocalDateTime.of(2026, 1, 3, 10, 0), LocalDateTime.of(2026, 1, 3, 10, 30), "GOOD"));
         sleepingSessionList.add(new SleepingSession(LocalDateTime.of(2026, 1, 2, 12, 0), LocalDateTime.of(2026, 1, 2, 15, 30), "GOOD"));
+        AmountNights amountNight = new AmountNights();
         //when
-        int amountNights = AmountNights.getAmountNights(sleepingSessionList, chronotypeDefinition);
+        long amountNights = amountNight.apply(sleepingSessionList).value;
         //then
         Assertions.assertEquals(1, amountNights, "Ожидается 1 ночь");
     }
@@ -54,12 +54,12 @@ public class AmountNightsTest {
     void testGetAmountNights_WhenExistThreeNightSessions_3() {
         //given
         List<SleepingSession> sleepingSessionList = new ArrayList<>();
-        ChronotypeDefinition chronotypeDefinition = new ChronotypeDefinition();
         sleepingSessionList.add(new SleepingSession(LocalDateTime.of(2026, 1, 1, 3, 0), LocalDateTime.of(2026, 1, 1, 5, 0), "GOOD"));
         sleepingSessionList.add(new SleepingSession(LocalDateTime.of(2026, 1, 2, 5, 0), LocalDateTime.of(2026, 1, 2, 9, 30), "GOOD"));
         sleepingSessionList.add(new SleepingSession(LocalDateTime.of(2026, 1, 5, 3, 0), LocalDateTime.of(2026, 1, 5, 3, 31), "GOOD"));
+        AmountNights amountNight = new AmountNights();
         //when
-        int amountNights = AmountNights.getAmountNights(sleepingSessionList, chronotypeDefinition);
+        long amountNights = amountNight.apply(sleepingSessionList).value;
         //then
         Assertions.assertEquals(3, amountNights, "Ожидается 3 ночи");
     }

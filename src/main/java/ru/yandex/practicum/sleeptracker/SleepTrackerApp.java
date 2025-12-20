@@ -20,11 +20,14 @@ public class SleepTrackerApp {
         MaxDurationSleepSession maxDurationSleepSession = new MaxDurationSleepSession();
         AverageDurationSleepSession averageDurationSleepingSession = new AverageDurationSleepSession();
         AmountSessionsWithBadSleepQuality amountSessionsWithBadSleepQuality = new AmountSessionsWithBadSleepQuality();
+        AmountNights amountNights = new AmountNights();
         sleepObjects.add(amountSleepingSession);
         sleepObjects.add(minDurationSleepSession);
         sleepObjects.add(maxDurationSleepSession);
         sleepObjects.add(averageDurationSleepingSession);
         sleepObjects.add(amountSessionsWithBadSleepQuality);
+        sleepObjects.add(amountNights);
+        sleepObjects.add(chronotypeDefinition);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yy HH:mm");
 
         try (FileReader reader = new FileReader("src/main/resources/sleep_log.txt")) {
@@ -40,12 +43,6 @@ public class SleepTrackerApp {
                     .map(object -> object.apply(sleepingSessionList))
                     .forEach(System.out::println);
 
-
-            int amountNight = AmountNights.getAmountNights(sleepingSessionList, chronotypeDefinition);
-            String chronotype = chronotypeDefinition.printDefinition();
-
-            System.out.println("Количество ночей: " + amountNight);
-            System.out.println("Хронотип: " + chronotype);
 
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
