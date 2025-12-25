@@ -28,9 +28,9 @@ public class AmountSessionsWithBadSleepQualityTest {
         //given
         List<SleepingSession> sleepingSessionList = new ArrayList<>();
         AmountSessionsWithBadSleepQuality amountSessionsWithBadSleepQuality = new AmountSessionsWithBadSleepQuality();
-        sleepingSessionList.add(new SleepingSession(LocalDateTime.of(2026, 1, 1, 3, 0), LocalDateTime.of(2026, 1, 1, 5, 34), "GOOD"));
-        sleepingSessionList.add(new SleepingSession(LocalDateTime.of(2026, 1, 2, 5, 0), LocalDateTime.of(2026, 1, 2, 9, 30), "BAD"));
-        sleepingSessionList.add(new SleepingSession(LocalDateTime.of(2026, 1, 5, 3, 0), LocalDateTime.of(2026, 1, 5, 3, 31), "GOOD"));
+        sleepingSessionList.add(new SleepingSession(LocalDateTime.of(2026, 1, 1, 3, 0), LocalDateTime.of(2026, 1, 1, 5, 34), SleepQuality.GOOD));
+        sleepingSessionList.add(new SleepingSession(LocalDateTime.of(2026, 1, 2, 5, 0), LocalDateTime.of(2026, 1, 2, 9, 30), SleepQuality.BAD));
+        sleepingSessionList.add(new SleepingSession(LocalDateTime.of(2026, 1, 5, 3, 0), LocalDateTime.of(2026, 1, 5, 3, 31), SleepQuality.GOOD));
         //when
         SleepAnalysisResult sleepAnalysisResult = amountSessionsWithBadSleepQuality.apply(sleepingSessionList);
         //then

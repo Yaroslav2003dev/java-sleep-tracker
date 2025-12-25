@@ -10,7 +10,7 @@ public class AmountSessionsWithBadSleepQuality implements Function<List<Sleeping
     public SleepAnalysisResult apply(List<SleepingSession> sleepingSessions) {
         countBadSleepingSession = sleepingSessions
                 .stream()
-                .filter(ss -> ss.getStatus().equals("BAD"))
+                .filter(ss -> ss.getStatus()==SleepQuality.BAD)
                 .count();
         return new SleepAnalysisResult("Количество сессий с плохим качество сна:", countBadSleepingSession);
     }

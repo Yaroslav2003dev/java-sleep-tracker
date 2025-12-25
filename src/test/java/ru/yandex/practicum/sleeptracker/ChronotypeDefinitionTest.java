@@ -16,7 +16,7 @@ public class ChronotypeDefinitionTest {
         //given
         List<SleepingSession> sleepingSessionList = new ArrayList<>();
         ChronotypeDefinition chronotypeDefinition = new ChronotypeDefinition();
-        sleepingSessionList.add(new SleepingSession(LocalDateTime.of(2026, 1, 1, 23, 20), LocalDateTime.of(2026, 1, 1, 10, 0), "GOOD"));
+        sleepingSessionList.add(new SleepingSession(LocalDateTime.of(2026, 1, 1, 23, 20), LocalDateTime.of(2026, 1, 1, 10, 0), SleepQuality.GOOD));
         //when
         LocalTime sleep;
         LocalTime wake;
@@ -35,7 +35,7 @@ public class ChronotypeDefinitionTest {
         //given
         List<SleepingSession> sleepingSessionList = new ArrayList<>();
         ChronotypeDefinition chronotypeDefinition = new ChronotypeDefinition();
-        sleepingSessionList.add(new SleepingSession(LocalDateTime.of(2026, 1, 1, 21, 0), LocalDateTime.of(2026, 1, 1, 5, 0), "GOOD"));
+        sleepingSessionList.add(new SleepingSession(LocalDateTime.of(2026, 1, 1, 21, 0), LocalDateTime.of(2026, 1, 1, 5, 0), SleepQuality.GOOD));
         //when
         LocalTime sleep;
         LocalTime wake;
@@ -54,7 +54,7 @@ public class ChronotypeDefinitionTest {
         //given
         List<SleepingSession> sleepingSessionList = new ArrayList<>();
         ChronotypeDefinition chronotypeDefinition = new ChronotypeDefinition();
-        sleepingSessionList.add(new SleepingSession(LocalDateTime.of(2026, 1, 1, 21, 0), LocalDateTime.of(2026, 1, 1, 12, 0), "GOOD"));
+        sleepingSessionList.add(new SleepingSession(LocalDateTime.of(2026, 1, 1, 21, 0), LocalDateTime.of(2026, 1, 1, 12, 0), SleepQuality.GOOD));
         //when
         LocalTime sleep;
         LocalTime wake;
@@ -73,7 +73,7 @@ public class ChronotypeDefinitionTest {
         //given
         List<SleepingSession> sleepingSessionList = new ArrayList<>();
         ChronotypeDefinition chronotypeDefinition = new ChronotypeDefinition();
-        sleepingSessionList.add(new SleepingSession(LocalDateTime.of(2026, 1, 1, 23, 1), LocalDateTime.of(2026, 1, 1, 5, 0), "GOOD"));
+        sleepingSessionList.add(new SleepingSession(LocalDateTime.of(2026, 1, 1, 23, 1), LocalDateTime.of(2026, 1, 1, 5, 0), SleepQuality.GOOD));
         //when
         LocalTime sleep;
         LocalTime wake;

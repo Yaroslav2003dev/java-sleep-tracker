@@ -37,7 +37,7 @@ public class SleepTrackerApp {
                     .map(line -> line.split(";"))
                     .map(data -> new SleepingSession(LocalDateTime.parse(data[0], formatter),
                             LocalDateTime.parse(data[1], formatter),
-                            data[2])).toList();
+                            SleepQuality.valueOf(data[2]))).toList();
 
             sleepObjects.stream()
                     .map(object -> object.apply(sleepingSessionList))

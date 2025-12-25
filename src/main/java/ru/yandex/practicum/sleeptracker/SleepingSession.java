@@ -5,14 +5,14 @@ import java.time.LocalDateTime;
 public class SleepingSession {
     LocalDateTime sleep;
     LocalDateTime wake;
-    String status;
+    SleepQuality status;
 
 
-    public String getStatus() {
+    public SleepQuality getStatus() {
         return status;
     }
 
-    public SleepingSession(LocalDateTime sleep, LocalDateTime wake, String status) {
+    public SleepingSession(LocalDateTime sleep, LocalDateTime wake, SleepQuality status) {
         this.sleep = sleep;
         this.wake = wake;
         this.status = status;

@@ -27,9 +27,9 @@ public class AverageDurationSleepSessionTest {
         //given
         List<SleepingSession> sleepingSessionList = new ArrayList<>();
         AverageDurationSleepSession averageDurationSleepSession = new AverageDurationSleepSession();
-        sleepingSessionList.add(new SleepingSession(LocalDateTime.of(2026, 1, 1, 3, 0), LocalDateTime.of(2026, 1, 1, 5, 0), "GOOD"));
-        sleepingSessionList.add(new SleepingSession(LocalDateTime.of(2026, 1, 2, 5, 0), LocalDateTime.of(2026, 1, 2, 9, 30), "GOOD"));
-        sleepingSessionList.add(new SleepingSession(LocalDateTime.of(2026, 1, 5, 3, 0), LocalDateTime.of(2026, 1, 5, 3, 31), "GOOD"));
+        sleepingSessionList.add(new SleepingSession(LocalDateTime.of(2026, 1, 1, 3, 0), LocalDateTime.of(2026, 1, 1, 5, 0), SleepQuality.GOOD));
+        sleepingSessionList.add(new SleepingSession(LocalDateTime.of(2026, 1, 2, 5, 0), LocalDateTime.of(2026, 1, 2, 9, 30), SleepQuality.GOOD));
+        sleepingSessionList.add(new SleepingSession(LocalDateTime.of(2026, 1, 5, 3, 0), LocalDateTime.of(2026, 1, 5, 3, 31), SleepQuality.GOOD));
         //when
         SleepAnalysisResult sleepAnalysisResult = averageDurationSleepSession.apply(sleepingSessionList);
         //then

@@ -27,9 +27,9 @@ public class MinDurationSleepSessionTest {
         //given
         List<SleepingSession> sleepingSessionList = new ArrayList<>();
         MinDurationSleepSession minDurationSleepSession = new MinDurationSleepSession();
-        sleepingSessionList.add(new SleepingSession(LocalDateTime.of(2026, 01, 01, 03, 00), LocalDateTime.of(2026, 01, 01, 05, 00), "GOOD"));
-        sleepingSessionList.add(new SleepingSession(LocalDateTime.of(2026, 01, 02, 05, 00), LocalDateTime.of(2026, 01, 02, 05, 30), "GOOD"));
-        sleepingSessionList.add(new SleepingSession(LocalDateTime.of(2026, 01, 05, 03, 00), LocalDateTime.of(2026, 01, 05, 03, 31), "GOOD"));
+        sleepingSessionList.add(new SleepingSession(LocalDateTime.of(2026, 01, 01, 03, 00), LocalDateTime.of(2026, 01, 01, 05, 00), SleepQuality.GOOD));
+        sleepingSessionList.add(new SleepingSession(LocalDateTime.of(2026, 01, 02, 05, 00), LocalDateTime.of(2026, 01, 02, 05, 30), SleepQuality.GOOD));
+        sleepingSessionList.add(new SleepingSession(LocalDateTime.of(2026, 01, 05, 03, 00), LocalDateTime.of(2026, 01, 05, 03, 31), SleepQuality.GOOD));
         //when
         SleepAnalysisResult sleepAnalysisResult = minDurationSleepSession.apply(sleepingSessionList);
         //then
